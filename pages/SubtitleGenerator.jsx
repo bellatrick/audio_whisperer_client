@@ -20,7 +20,7 @@ export const SubtitleGenerator = () => {
       formData.append('target_language', targetLanguage);
 
       const response = await fetch(
-        'http://localhost:4000/api/generate-subtitle',
+        'https://youtube-whisperer.onrender.com/api/generate-subtitle',
         {
           method: 'POST',
           body: formData
