@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import MarkdownPreview from '@uiw/react-markdown-preview';
-import { PromptMediaUpload } from './PromptMediaUpload';
+import { useState } from 'react';import MarkdownPreview from '@uiw/react-markdown-preview';
+import { PromptMediaUpload } from '../src/components/PromptMediaUpload';
 
 export const FluencyAnalyzer = () => {
   const [loading, setLoading] = useState(false);
@@ -35,15 +34,15 @@ export const FluencyAnalyzer = () => {
   return (
     <div className='space-y-6 overscroll-x-none'>
       {/* Title Card */}
-      <div className='p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg'>
+      <div className='p-6 bg-white/50 dark:bg-gray-800/50  rounded-lg shadow-lg'>
         <h1 className='text-2xl text-green-700 dark:text-green-300'>
           Fluency analyzer
         </h1>
         <p className='py-2 text-white leading-8'>
-          Click the button below to generate topic suggestions, pick a topic, and
-          upload a 1-minute recording of yourself speaking on it.<br/> The AI will
-          analyze your speech and provide actionable insights to help you
-          improve your fluency and communication skills.
+          Click the button below to generate topic suggestions, pick a topic,
+          and upload a 1-minute recording of yourself speaking on it.
+          <br /> The AI will analyze your speech and provide actionable insights
+          to help you improve your fluency and communication skills.
         </p>
 
         <PromptMediaUpload onFileSelect={handleFileSelect} />

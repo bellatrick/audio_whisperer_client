@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { MediaUpload } from './MediaUpload';
+import { useState } from 'react';import { MediaUpload } from '../src/components/MediaUpload';
 import MarkdownPreview from '@uiw/react-markdown-preview';
-import LanguageCodeDropdown from './LanguageInput';
+import LanguageCodeDropdown from '../src/components/LanguageInput';
 import { languages } from 'countries-list';
 
 export const TranslationTool = () => {
@@ -9,12 +8,12 @@ export const TranslationTool = () => {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('transcript');
   const [targetLanguage, setTargetLanguage] = useState('');
-  const [fileName, setFileName] = useState('')
+  const [fileName, setFileName] = useState('');
 
-  console.log(languages)
+  console.log(languages);
 
   const handleFileSelect = async (file) => {
-    setFileName(file.name)
+    setFileName(file.name);
     if (!targetLanguage) {
       alert('Please select a target language.');
       return;
@@ -23,7 +22,7 @@ export const TranslationTool = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('target_language',targetLanguage)
+      formData.append('target_language', targetLanguage);
 
       const response = await fetch(
         'https://youtube-whisperer.onrender.com/api/translate-content',
@@ -60,7 +59,9 @@ export const TranslationTool = () => {
       {/* Loading Spinner */}
       {loading && (
         <div className='flex flex-col text-white items-center gap-4 justify-center'>
-            <p className='text-md font-bold'>Please wait a moment while we process {fileName}</p>
+          <p className='text-md font-bold'>
+            Please wait a moment while we process {fileName}
+          </p>
           <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600'></div>
         </div>
       )}
@@ -72,10 +73,10 @@ export const TranslationTool = () => {
           </p>
         </div>
       )}
-          {content?.language && (
+      {content?.language && (
         <div>
           <p className='text-green-700 dark:text-green-300 text-center text-lg py-4'>
-           Your uploaded media is in {languages[content.language].name}
+            Your uploaded media is in {languages[content.language].name}
           </p>
         </div>
       )}

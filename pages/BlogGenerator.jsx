@@ -1,4 +1,5 @@
-import { useState } from 'react';import { MediaUpload } from './MediaUpload';
+import { useState } from 'react';
+import { MediaUpload } from '../src/components/MediaUpload';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 
 export const BlogGenerator = () => {
@@ -6,19 +7,22 @@ export const BlogGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('preview');
 
-  const [fileName, setFileName] = useState('')
+  const [fileName, setFileName] = useState('');
 
   const handleFileSelect = async (file) => {
-    setFileName(file.name)
+    setFileName(file.name);
     setLoading(true);
     try {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('https://youtube-whisperer.onrender.com/api/generate-blog', {
-        method: 'POST',
-        body: formData
-      });
+      const response = await fetch(
+        'https://youtube-whisperer.onrender.com/api/generate-blog',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
 
       const data = await response.json();
       setMarkdown(data.markdown);

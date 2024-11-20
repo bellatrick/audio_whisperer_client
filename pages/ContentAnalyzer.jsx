@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { MediaUpload } from './MediaUpload';
+import { useState } from 'react';import { MediaUpload } from '../src/components/MediaUpload';
 import {
   BarChart,
   Bar,
@@ -13,11 +12,10 @@ import {
 export const ContentAnalyzer = () => {
   const [analysisData, setAnalysisData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [fileName, setFileName] = useState('')
-
+  const [fileName, setFileName] = useState('');
 
   const handleFileSelect = async (file) => {
-    setFileName(file.name)
+    setFileName(file.name);
     setLoading(true);
     try {
       const formData = new FormData();
@@ -55,13 +53,17 @@ export const ContentAnalyzer = () => {
       {/* Loading Indicator */}
       {loading && (
         <div className='flex flex-col text-white items-center gap-4 justify-center'>
-            <p className='text-md font-bold'>Please wait a moment while we process {fileName} </p>
+          <p className='text-md font-bold'>
+            Please wait a moment while we process {fileName}{' '}
+          </p>
           <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600'></div>
         </div>
       )}
       {analysisData?.message && (
         <div>
-          <p className='text-green-700 dark:text-green-300 text-center text-lg py-4'>{analysisData.message}</p>
+          <p className='text-green-700 dark:text-green-300 text-center text-lg py-4'>
+            {analysisData.message}
+          </p>
         </div>
       )}
 
@@ -95,7 +97,7 @@ export const ContentAnalyzer = () => {
               <table className='w-full table-auto border-collapse'>
                 <thead>
                   <tr className='border-b text-green-500 border-green-200 dark:border-green-800'>
-                  <th className='py-2 px-4 text-left'>S/N</th>
+                    <th className='py-2 px-4 text-left'>S/N</th>
                     <th className='py-2 px-4 text-left'>Word</th>
 
                     <th className='py-2 px-4 text-left'>Time Start</th>
@@ -109,7 +111,7 @@ export const ContentAnalyzer = () => {
                       key={index}
                       className='border-b capitalize border-green-100 dark:border-green-900'
                     >
-                        <td className='py-2 px-4'>{index+1}</td>
+                      <td className='py-2 px-4'>{index + 1}</td>
                       <td className='py-2 px-4'>{item.word}</td>
                       <td className='py-2 px-4'>{item.time_start}</td>
                       <td className='py-2 px-4'>{item.time_end}</td>
