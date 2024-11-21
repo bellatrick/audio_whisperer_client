@@ -1,4 +1,5 @@
-import { useState } from 'react';import MarkdownPreview from '@uiw/react-markdown-preview';
+import { useState } from 'react';
+import MarkdownPreview from '@uiw/react-markdown-preview';
 import { PromptMediaUpload } from '../src/components/PromptMediaUpload';
 
 export const FluencyAnalyzer = () => {
@@ -55,6 +56,13 @@ export const FluencyAnalyzer = () => {
             Please wait a moment while we process {fileName}
           </p>
           <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600'></div>
+        </div>
+      )}
+      {analysisResult?.message && (
+        <div>
+          <p className='text-green-700 dark:text-green-300 text-center text-lg py-4'>
+            {analysisResult.message}
+          </p>
         </div>
       )}
 

@@ -4,7 +4,6 @@ import LanguageCodeDropdown from '../src/components/LanguageInput';
 
 export const SubtitleGenerator = () => {
   const [srtContent, setSrtContent] = useState('');
-  const [translationContent, setTranslationContent] = useState('');
   const [loading, setLoading] = useState(false);
   const [targetLanguage, setTargetLanguage] = useState('en');
 
@@ -28,10 +27,8 @@ export const SubtitleGenerator = () => {
       );
 
       const data = await response.json();
-      setSrtContent(data.subtitle);
-      if (data?.translation) {
-        setTranslationContent(data.translation);
-      }
+      setSrtContent(data);
+
     } catch (error) {
       console.error('Error translating content:', error);
     } finally {
@@ -73,16 +70,23 @@ export const SubtitleGenerator = () => {
           <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-green-600'></div>
         </div>
       )}
+           {srtContent?.message && (
+        <div>
+          <p className='text-green-700 dark:text-green-300 text-center text-lg py-4'>
+            {srtContent.message}
+          </p>
+        </div>
+      )}
 
-      <div className='flex flex-col gap-4 md:flex-row justify-between'>
-        {srtContent && (
-          <div className='p-6 bg-gray-800/50  shadow-md rounded-lg'>
+      <div className='flex w-full flex-col gap-4 md:flex-row justify-between'>
+        {srtContent?.subtitle && (
+          <div className='p-6 w-full bg-gray-800/50  shadow-md rounded-lg'>
             <div className='flex flex-row items-center justify-between'>
               <h3 className='text-xl font-semibold text-green-700 dark:text-green-300'>
                 Transcript subtitle Result
               </h3>
               <button
-                onClick={()=>handleDownload(srtContent)}
+                onClick={()=>handleDownload(srtContent.subtitle)}
                 className='px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg flex items-center'
               >
                 <svg
@@ -98,18 +102,18 @@ export const SubtitleGenerator = () => {
               </button>
             </div>
             <pre className='whitespace-pre-wrap text-white font-mono text-sm max-h-96 overflow-y-auto mt-4'>
-              {srtContent}
+              {srtContent.subtitle}
             </pre>
           </div>
         )}
-          {translationContent && (
-          <div className='p-6 bg-gray-800/50  shadow-md rounded-lg'>
+          {srtContent?.translation && (
+          <div className='p-6 w-full bg-gray-800/50  shadow-md rounded-lg'>
             <div className='flex flex-row items-center justify-between'>
               <h3 className='text-xl font-semibold text-green-700 dark:text-green-300'>
                 Translation subtitle Result
               </h3>
               <button
-                onClick={()=>handleDownload(translationContent)}
+                onClick={()=>handleDownload(srtContent?.translation)}
                 className='px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg flex items-center'
               >
                 <svg
@@ -125,7 +129,7 @@ export const SubtitleGenerator = () => {
               </button>
             </div>
             <pre className='whitespace-pre-wrap text-white font-mono text-sm max-h-96 overflow-y-auto mt-4'>
-              {translationContent}
+              {srtContent?.translation}
             </pre>
           </div>
         )}
