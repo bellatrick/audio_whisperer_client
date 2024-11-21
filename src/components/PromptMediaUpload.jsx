@@ -97,7 +97,7 @@ export const PromptMediaUpload = ({ onFileSelect }) => {
   };
 
   return (
-    <div className='p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg space-y-4'>
+    <div className='p-6 bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-lg space-y-4'>
       {/* Topic Suggestion Section */}
       {suggestedTopics.length > 1 && (
         <div className='text-center bg-green-100 dark:bg-green-900 p-4 rounded-lg'>

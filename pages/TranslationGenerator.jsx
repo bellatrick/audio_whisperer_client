@@ -1,4 +1,5 @@
-import { useState } from 'react';import { MediaUpload } from '../src/components/MediaUpload';
+import { useState } from 'react';
+import { MediaUpload } from '../src/components/MediaUpload';
 import MarkdownPreview from '@uiw/react-markdown-preview';
 import LanguageCodeDropdown from '../src/components/LanguageInput';
 import { languages } from 'countries-list';
@@ -49,6 +50,10 @@ export const TranslationTool = () => {
           <h1 className='text-2xl font-semibold text-green-700 dark:text-green-300'>
             Translation Tool
           </h1>
+          <p className='py-2 text-white leading-8'>
+            This allows you to generate the translation for your audio
+            transcript for any language of your choice
+          </p>
           <LanguageCodeDropdown setTargetLanguage={setTargetLanguage} />
         </div>
         <div>
@@ -109,7 +114,7 @@ export const TranslationTool = () => {
           </div>
 
           {/* Tab Content */}
-          <div className='p-6  bg-gray-800/50 text-white backdrop-blur-sm rounded-lg shadow-lg'>
+          <div className='p-6  bg-gray-800/50 text-white rounded-lg shadow-lg'>
             {activeTab === 'transcript' && (
               <div className='prose dark:prose-invert '>
                 <MarkdownPreview

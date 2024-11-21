@@ -45,6 +45,9 @@ export const ContentAnalyzer = () => {
         <h2 className='text-2xl font-semibold text-green-700 dark:text-green-300'>
           Content Analyzer
         </h2>
+        <p className='py-2 text-white leading-8'>
+        This tool allows you to assess the safety of your media and determine its suitability for your audience. It provides a bar chart displaying the frequency of potentially unsafe words, and a table that includes timestamps and additional context.
+        </p>
         <div className='mt-4'>
           <MediaUpload onFileSelect={handleFileSelect} />
         </div>

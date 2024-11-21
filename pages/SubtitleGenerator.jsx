@@ -58,8 +58,13 @@ export const SubtitleGenerator = () => {
         <h2 className='text-2xl font-semibold text-green-700 dark:text-green-300'>
           Subtitle Generator
         </h2>
-        <LanguageCodeDropdown setTargetLanguage={setTargetLanguage} />
+        <p className='py-2 text-white leading-8'>
+            This generates a subtitle file for your transcript and a translation to any language of your choice.
+          </p>
+        <LanguageCodeDropdown defaultLanguage='en' setTargetLanguage={setTargetLanguage} />
+
         <MediaUpload onFileSelect={handleFileSelect} />
+
       </div>
 
       {/* Loading Spinner */}
@@ -71,7 +76,7 @@ export const SubtitleGenerator = () => {
 
       <div className='flex flex-col gap-4 md:flex-row justify-between'>
         {srtContent && (
-          <div className='p-6 bg-gray-800/50 backdrop-blur-sm shadow-md rounded-lg'>
+          <div className='p-6 bg-gray-800/50  shadow-md rounded-lg'>
             <div className='flex flex-row items-center justify-between'>
               <h3 className='text-xl font-semibold text-green-700 dark:text-green-300'>
                 Transcript subtitle Result
@@ -98,7 +103,7 @@ export const SubtitleGenerator = () => {
           </div>
         )}
           {translationContent && (
-          <div className='p-6 bg-gray-800/50 backdrop-blur-sm shadow-md rounded-lg'>
+          <div className='p-6 bg-gray-800/50  shadow-md rounded-lg'>
             <div className='flex flex-row items-center justify-between'>
               <h3 className='text-xl font-semibold text-green-700 dark:text-green-300'>
                 Translation subtitle Result

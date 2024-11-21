@@ -56,7 +56,7 @@ export const MediaUpload = ({ onFileSelect }) => {
   };
 
   return (
-    <div className="p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg">
+    <div className="p-6 bg-white/50 dark:bg-gray-800/50  rounded-lg shadow-lg">
       <div className="space-y-4">
         {/* File Upload Section */}
         <div className="flex flex-col items-center justify-center border-2 border-dashed border-green-300 dark:border-green-700 rounded-lg p-6 hover:border-green-400 dark:hover:border-green-600 transition-colors">

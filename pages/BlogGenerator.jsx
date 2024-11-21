@@ -36,10 +36,13 @@ export const BlogGenerator = () => {
   return (
     <div className='space-y-6 overscroll-x-none'>
       {/* Title Card */}
-      <div className='p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg'>
+      <div className='p-6 bg-white/50 dark:bg-gray-800/50  rounded-lg shadow-lg'>
         <h1 className='text-2xl text-green-700 dark:text-green-300'>
           Blog Post Generator
         </h1>
+        <p className='py-2 text-white leading-8'>
+        This tool enables you to upload a media file and automatically generate a Markdown-formatted tutorial blog based on the audio transcript extracted from the media.
+        </p>
         <MediaUpload onFileSelect={handleFileSelect} />
       </div>
 
@@ -89,7 +92,7 @@ export const BlogGenerator = () => {
           </div>
 
           {/* Tab Content */}
-          <div className='p-6  bg-gray-800/50 text-white backdrop-blur-sm rounded-lg shadow-lg'>
+          <div className='p-6  bg-gray-800/50 text-white  rounded-lg shadow-lg'>
             {activeTab === 'preview' && (
               <div className='prose dark:prose-invert '>
                 <MarkdownPreview source={markdown} style={{ padding: 16 }} />

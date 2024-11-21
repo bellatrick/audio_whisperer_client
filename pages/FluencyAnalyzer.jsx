@@ -60,7 +60,7 @@ export const FluencyAnalyzer = () => {
 
       {/* Analysis Results */}
       {analysisResult && (
-        <div className='p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg'>
+        <div className='p-6 bg-white/50 dark:bg-gray-800/50  rounded-lg shadow-lg'>
           <h2 className='text-xl text-green-700 dark:text-green-300 mb-4'>
             Audio Analysis
           </h2>
